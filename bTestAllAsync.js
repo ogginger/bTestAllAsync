@@ -10,7 +10,6 @@ define([
 	log
 ) {
   return function( Input ) {
-	log("bTestAllAsync");
 	return promise(function( resolve ) {
 		async_every({
 			"Set": Input,

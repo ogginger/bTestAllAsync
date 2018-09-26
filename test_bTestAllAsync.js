@@ -18,7 +18,7 @@ define([
       log("test_bTestAllAsync initialized successfully!");
       var xTestSuite = this;
       xTestSuite.set( "MethodUnderTest", "bTestAllAsync" );
-//	xTestSuite.add( bTestAllAsync_AsyncTestCollectionWithPassingTest_ResolvesTrue );
+	xTestSuite.add( bTestAllAsync_AsyncTestCollectionWithPassingTest_ResolvesTrue );
 	xTestSuite.add( bTestAllAsync_AsyncTestCollectionWithPassingTestAndFailingTest_ResolvesFalse );
       xTestSuite.test();
     }
