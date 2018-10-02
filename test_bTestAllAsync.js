@@ -5,13 +5,15 @@ define([
   "log",
   "bTestAllAsync",
 	"tests/bTestAllAsync_AsyncTestCollectionWithPassingTest_ResolvesTrue",
-	"tests/bTestAllAsync_AsyncTestCollectionWithPassingTestAndFailingTest_ResolvesFalse"
+	"tests/bTestAllAsync_AsyncTestCollectionWithPassingTestAndFailingTest_ResolvesFalse",
+	"tests/bTestAllAsync_NoArguments_ResolvesFalse"
 ], function(
   TestSuite,
   log,
   bTestAllAsync,
 	bTestAllAsync_AsyncTestCollectionWithPassingTest_ResolvesTrue,
-	bTestAllAsync_AsyncTestCollectionWithPassingTestAndFailingTest_ResolvesFalse
+	bTestAllAsync_AsyncTestCollectionWithPassingTestAndFailingTest_ResolvesFalse,
+	bTestAllAsync_NoArguments_ResolvesFalse
 ) {
   return TestSuite.extend({
     "initialize": function() {
@@ -20,6 +22,7 @@ define([
       xTestSuite.set( "MethodUnderTest", "bTestAllAsync" );
 	xTestSuite.add( bTestAllAsync_AsyncTestCollectionWithPassingTest_ResolvesTrue );
 	xTestSuite.add( bTestAllAsync_AsyncTestCollectionWithPassingTestAndFailingTest_ResolvesFalse );
+	xTestSuite.add( bTestAllAsync_NoArguments_ResolvesFalse );
       xTestSuite.test();
     }
   });

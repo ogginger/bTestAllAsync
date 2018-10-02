@@ -11,20 +11,25 @@ define([
 ) {
   return function( Input ) {
 	return promise(function( resolve ) {
-		async_every({
-			"Set": Input,
-			"Function": function( Input ) {
-				return promise(function( resolve ) {
-					Input.Run().then(function( Result ) {
-						resolve( Result );
+		if ( Input === undefined ) {
+			resolve( false );
+		} else {
+
+			async_every({
+				"Set": Input,
+				"Function": function( Input ) {
+					return promise(function( resolve ) {
+						Input.Run().then(function( Result ) {
+							resolve( Result );
+						});
 					});
-				});
-			}
-		}).then(function( Result ) {
-			resolve( true );
-		}).catch(function( Error ) {
-			resolve(false);	
-		});	
+				}
+			}).then(function( Result ) {
+				resolve( true );
+			}).catch(function( Error ) {
+				resolve(false);	
+			});	
+		}
 	});
   };
 });
