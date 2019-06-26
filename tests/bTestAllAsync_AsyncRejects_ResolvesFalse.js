@@ -1,37 +1,34 @@
 //bTestAllAsync_AsyncRejects_ResolvesFalse.js: Testing logic.
 
 define([
-	"TestSuite",
+	"log",
 	"bTestAllAsync",
-	"promise"
+	"promise",
+	"xGenerateAsyncTest"
 ], function(
-	TestSuite,
+	log,
 	bTestAllAsync,
-	promise
+	promise,
+	xGenerateAsyncTest
 ) {
 	return {
 		"Async": true,
 		"Name":"bTestAllAsync_AsyncRejects_ResolvesFalse",
-		"Input": function() {
-
-			var xTestSuite = new TestSuite();
-			xTestSuite.add({
-				"Async": true,
-				"Name": "FailingAsync",
-				"Input": undefined,
-				"Function": function() {
-					return promise(function( resolve, reject ) {
-
-						reject({ "Message": "Error" });
-					});
-				},
-				"ExpectedOutput": true
-			});
-			return promise(function( resolve ) {
-				resolve( xTestSuite.get("AsyncTestCollection") );
-			});
-		},
+		"Input": [xGenerateAsyncTest({
+			"Async": true,
+			"Name": "Test_AsyncFunctionRejects",
+			"Input": undefined,
+			"Function": function() {
+				return promise(function( resolve, reject ) {
+					reject({ "Message": "Error" });
+				});
+			},
+			"ExpectedOutput": true,
+			"ExceptionTest": false,
+			"Debug": false
+		})],
 		"Function": bTestAllAsync,
-		"ExpectedOutput": false
+		"ExpectedOutput": false,
+		"Debug": true
 	};
 });
